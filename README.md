@@ -1,7 +1,11 @@
 # trollsrc
 PoCs to share for trolling
 
-.\make-shortcut.ps1 will assist in generating malicious shortcut links
+.\make-shortcut.ps1 will assist in generating malicious shortcut links (chrome Icon by default)
+
+It will take arbitrary powershell 1 liners as an argument to base64 encode and execute when the icon is clicked
+
+
 
 .\bd-lnk.ps1 will take an executable shortcut as an argument, and backdoor with a troll message payload
 
