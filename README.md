@@ -4,6 +4,10 @@ PoCs to share for trolling
 These tools are intended to be used in a well-configured windows environment that allows for some user-level powershell execution.
 Have a problem with admins leaving their workstations unlocked? Teach them a lesson by performing a benign backdoor on their primary web browser and wait :D
 
+## .\Invoke-Dickfuscation.ps1
+* Takes a target binary
+* Bypasses most AV by overwriting the 'This program cannot be run in DOS mode' PE bytes with an ASCII cock
+
 ## .\make-shortcut.ps1
 * Generates malicious shortcut links (chrome Icon mimicked by default)
 * Takes powershell 1 liners as an argument; base64 encodes and executes payload when the icon is clicked
