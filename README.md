@@ -1,6 +1,6 @@
 # trollsrc
 PoCs to share for trolling
-
+## WARNING, THIS REPO IS FOR ADVANCED PERSISTENT TROLLS ONLY
 These tools are intended to be used in a well-configured windows environment that allows for some user-level powershell execution.
 Have a problem with admins leaving their workstations unlocked? Teach them a lesson by performing a benign backdoor on their primary web browser and wait :D
 
