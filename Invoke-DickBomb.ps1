@@ -115,7 +115,7 @@ write-host '
 ............:,...Z=.....,~~:......:~+~......,.......:==~... ..,,.....,=++,.... .....~,.......~:,......~=:....:,.........
 '
 
-write-host "Sending dicks to $target : $port"
+write-host "Sending 8====D to $target : $port"
 
 # Send over 9001 dicks
 1..$count | %{
