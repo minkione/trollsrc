@@ -4,13 +4,16 @@ PoCs to share for trolling
 These tools are intended to be used in a well-configured windows environment that allows for some user-level powershell execution.
 Have a problem with admins leaving their workstations unlocked? Teach them a lesson by performing a benign backdoor on their primary web browser and wait :D
 
-## .\Invoke-Dickfuscation.ps1
+## .\Invoke-Dickfuscation.ps1 -target C:\mimikatz.exe
 * Takes a target binary
 * Bypasses most AV by overwriting the 'This program cannot be run in DOS mode' PE bytes with an ASCII cock
 
+## .\Invoke-DickBomb.ps1 -target 8.8.8.8 -port 53 -count 3
+* Sends a naughty message several times to a given socket.
+
 ## .\make-shortcut.ps1
 * Generates malicious shortcut links (chrome Icon mimicked by default)
-* Takes powershell 1 liners as an argument; base64 encodes and executes payload when the icon is clicked
+* Takes powershell 1 liners as an optional argument; base64 encodes and executes payload when the icon is clicked
 
 ## .\bd-lnk.ps1 
 * Takes a shortcut path as an argument; backdoors it with a troll message payload
