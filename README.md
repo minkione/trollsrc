@@ -10,6 +10,7 @@ Have a problem with admins leaving their workstations unlocked? Teach them a les
 
 ## .\Invoke-DickBomb.ps1 -target 8.8.8.8 -port 53 -count 3
 * Sends a naughty message several times to a given socket.
+* Leave some fun evidence for the DFIR guys :D
 
 ## .\make-shortcut.ps1
 * Generates malicious shortcut links (chrome Icon mimicked by default)
